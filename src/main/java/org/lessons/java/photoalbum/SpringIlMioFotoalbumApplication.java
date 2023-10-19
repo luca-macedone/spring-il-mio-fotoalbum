@@ -1,10 +1,12 @@
 package org.lessons.java.photoalbum;
 
 import org.lessons.java.photoalbum.db.pojo.Category;
+import org.lessons.java.photoalbum.db.pojo.Message;
 import org.lessons.java.photoalbum.db.pojo.Photo;
 import org.lessons.java.photoalbum.db.pojo.Role;
 import org.lessons.java.photoalbum.db.pojo.User;
 import org.lessons.java.photoalbum.db.serv.CategoryService;
+import org.lessons.java.photoalbum.db.serv.MessageService;
 import org.lessons.java.photoalbum.db.serv.PhotoService;
 import org.lessons.java.photoalbum.db.serv.RoleService;
 import org.lessons.java.photoalbum.db.serv.UserService;
@@ -28,6 +30,9 @@ public class SpringIlMioFotoalbumApplication implements CommandLineRunner {
 
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private MessageService messageService;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(SpringIlMioFotoalbumApplication.class, args);
@@ -73,6 +78,12 @@ public class SpringIlMioFotoalbumApplication implements CommandLineRunner {
 		
 		System.out.println("----------------------------");
 		System.out.println("Photos seeded.");
+		
+		Message m1 = new Message("test@email.com", "lorem ipsum dolor amet");
+		Message m2 = new Message("test2@email.com", "lorem ipsum dolor amet 2");
+		
+		messageService.save(m1);
+		messageService.save(m2);
 		
 		System.out.println("----------------------------");
 		System.out.println("Everything is seeded.");
