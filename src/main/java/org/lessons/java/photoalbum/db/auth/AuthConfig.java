@@ -1,7 +1,7 @@
 package org.lessons.java.photoalbum.db.auth;
 
 
-import org.lessons.java.photoalbum.db.sev.UserService;
+import org.lessons.java.photoalbum.db.serv.UserService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -15,16 +15,16 @@ public class AuthConfig {
 	@Bean
 	SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 		http.csrf().disable().authorizeHttpRequests()
-			.requestMatchers("/create").hasAuthority("ADMIN")
-			.requestMatchers("/update/**").hasAuthority("ADMIN")
-			.requestMatchers("/delete/**").hasAuthority("ADMIN")
-			.requestMatchers("/ingredients").hasAuthority("ADMIN")
-			.requestMatchers("/ingredients/create").hasAuthority("ADMIN")
-			.requestMatchers("/ingredients/edit/**").hasAuthority("ADMIN")
-			.requestMatchers("/ingredients/delete/**").hasAuthority("ADMIN")
-			.requestMatchers("/promo/**").hasAuthority("ADMIN")
-			.requestMatchers("/promo/delete/**").hasAuthority("ADMIN")
-			.requestMatchers("/promo/edit/**").hasAuthority("ADMIN")
+			.requestMatchers("/photos").hasAuthority("ADMIN")
+			.requestMatchers("/photos/create").hasAuthority("ADMIN")
+			.requestMatchers("/photos/edit/**").hasAuthority("ADMIN")
+			.requestMatchers("/photos/update/**").hasAuthority("ADMIN")
+			.requestMatchers("/photos/delete/**").hasAuthority("ADMIN")
+			.requestMatchers("/categories").hasAuthority("ADMIN")
+			.requestMatchers("/categories/create").hasAuthority("ADMIN")
+			.requestMatchers("/categories/edit/**").hasAuthority("ADMIN")
+			.requestMatchers("/categories/update/**").hasAuthority("ADMIN")
+			.requestMatchers("/categories/delete/**").hasAuthority("ADMIN")
 			.requestMatchers("/**").permitAll()
 			.and().formLogin().defaultSuccessUrl("/")
 			.and().logout();

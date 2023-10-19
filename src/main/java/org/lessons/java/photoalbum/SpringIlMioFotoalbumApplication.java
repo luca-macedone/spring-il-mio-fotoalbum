@@ -4,10 +4,10 @@ import org.lessons.java.photoalbum.db.pojo.Category;
 import org.lessons.java.photoalbum.db.pojo.Photo;
 import org.lessons.java.photoalbum.db.pojo.Role;
 import org.lessons.java.photoalbum.db.pojo.User;
-import org.lessons.java.photoalbum.db.sev.CategoryService;
-import org.lessons.java.photoalbum.db.sev.PhotoService;
-import org.lessons.java.photoalbum.db.sev.RoleService;
-import org.lessons.java.photoalbum.db.sev.UserService;
+import org.lessons.java.photoalbum.db.serv.CategoryService;
+import org.lessons.java.photoalbum.db.serv.PhotoService;
+import org.lessons.java.photoalbum.db.serv.RoleService;
+import org.lessons.java.photoalbum.db.serv.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -44,7 +44,7 @@ public class SpringIlMioFotoalbumApplication implements CommandLineRunner {
 		final String testPws = new BCryptPasswordEncoder().encode("test");
 		
 		User testUser = new User("user", testPws, user);
-		User testAdmin = new User("admin", testPws, user);
+		User testAdmin = new User("admin", testPws, admin);
 		
 		userService.save(testUser);
 		userService.save(testAdmin);

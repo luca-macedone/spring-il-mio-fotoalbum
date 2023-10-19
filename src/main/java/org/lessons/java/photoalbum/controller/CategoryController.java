@@ -5,8 +5,8 @@ import java.util.Optional;
 
 import org.lessons.java.photoalbum.db.pojo.Category;
 import org.lessons.java.photoalbum.db.pojo.Photo;
-import org.lessons.java.photoalbum.db.sev.CategoryService;
-import org.lessons.java.photoalbum.db.sev.PhotoService;
+import org.lessons.java.photoalbum.db.serv.CategoryService;
+import org.lessons.java.photoalbum.db.serv.PhotoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -34,7 +34,7 @@ public class CategoryController {
 		
 		model.addAttribute("categories", categories);
 		
-		return "category_index";
+		return "categories/category_index";
 	}
 	
 	@GetMapping("/create")
@@ -45,7 +45,7 @@ public class CategoryController {
 		model.addAttribute("photos", photos);
 		model.addAttribute("category", category);
 		
-		return "category_form";
+		return "categories/category_form";
 	}
 	
 	@PostMapping("/create")
@@ -68,21 +68,23 @@ public class CategoryController {
 		Optional<Category> categoryOpt = categoryService.findById(id);
 		if(!categoryOpt.isEmpty()) {
 			Category category = categoryOpt.get();
-			List<Photo> photos = photoService.findAll();
 			
 			model.addAttribute(category);
-			model.addAttribute(photos);
 			
-			return "category_form";
+			return "categories/category_form";
 		}
-		
 		return "not_found";
 	}
 	
 	@PostMapping("/edit/{category_id}")
 	public String category__update(Model model,
 			@Valid @ModelAttribute Category category,
-			BindingResult bindingResult) {
+			BindingResult bindingResult,
+			@PathVariable("category_id") int id) {
+		category.setId(id);
+		System.out.println(category);
+		categoryService.save(category);
+		/*
 		List<Photo> photos = photoService.findAll();
 		for(Photo photo : photos) {
 			if(category.hasPhoto(photo)) {
@@ -93,6 +95,7 @@ public class CategoryController {
 			
 			photoService.save(photo);
 		}
+		*/
 		
 		return "redirect:/categories";
 	}

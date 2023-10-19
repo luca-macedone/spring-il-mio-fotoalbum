@@ -1,4 +1,4 @@
-package org.lessons.java.photoalbum.db.sev;
+package org.lessons.java.photoalbum.db.serv;
 
 import java.util.List;
 import java.util.Optional;

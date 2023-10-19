@@ -3,8 +3,10 @@ package org.lessons.java.photoalbum.controller;
 import java.util.List;
 import java.util.Optional;
 
+import org.lessons.java.photoalbum.db.pojo.Category;
 import org.lessons.java.photoalbum.db.pojo.Photo;
-import org.lessons.java.photoalbum.db.sev.PhotoService;
+import org.lessons.java.photoalbum.db.serv.CategoryService;
+import org.lessons.java.photoalbum.db.serv.PhotoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,14 +15,19 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import jakarta.validation.Valid;
 
-@Controller("/photos")
+@Controller
+@RequestMapping("/photos")
 public class PhotoController {
 	@Autowired
 	private PhotoService photoService;
+	
+	@Autowired
+	private CategoryService categoryService;
 	
 	@GetMapping
 	public String photos__index(Model model,
@@ -31,7 +38,7 @@ public class PhotoController {
 		
 		model.addAttribute("photos", photos);
 		
-		return "photos__index";
+		return "photos/photos_index";
 	}
 	
 	@GetMapping("/{photo_id}")
@@ -43,7 +50,7 @@ public class PhotoController {
 			
 			model.addAttribute("photo", photo);
 			
-			return "redirect:/photos";
+			return "photos/photo_show";
 		}
 		return "not_found";
 	}
@@ -51,10 +58,12 @@ public class PhotoController {
 	@GetMapping("/create")
 	public String photos__create(Model model) {
 		Photo photo = new Photo();
+		List<Category> categoriesList = categoryService.findAll();
 	
 		model.addAttribute("photo", photo);
+		model.addAttribute("categoriesList", categoriesList);
 		
-		return "photos__form";
+		return "photos/photos_form";
 	}
 	
 	@PostMapping("/create")
@@ -64,13 +73,13 @@ public class PhotoController {
 		if(bindingResult.hasErrors()) {
 			System.err.println("Error: ");
 			bindingResult.getAllErrors().forEach(System.err::println);
-			return "photos__form";
+			return "photos/photos_form";
 		}else {
 			try {
 				photoService.save(photo);
 			}catch(Exception e) {
 				System.err.println(e.getMessage());
-				return "photos__form";
+				return "photos/photos_form";
 			}
 		}
 		return "redirect:/photos";
@@ -82,32 +91,36 @@ public class PhotoController {
 		Optional<Photo> photoOpt = photoService.findById(id);
 		if(!photoOpt.isEmpty()) {
 			Photo photo = photoOpt.get();
+			List<Category> categoriesList = categoryService.findAll();
 			
+			model.addAttribute("categoriesList", categoriesList);
 			model.addAttribute("photo", photo);
 			
-			return "photos_form";
+			return "photos/photos_form";
 		}
 		
 		return "not_found";
 	}
 	
 	@PostMapping("/update/{photo_id}")
-	public String photos__update(Model model,
-			@Valid @ModelAttribute Photo photo,
-			BindingResult bindingResult) {
+	public String photos__update(@Valid @ModelAttribute Photo photo,
+			BindingResult bindingResult,
+			Model model,
+			@PathVariable("photo_id") int id) {
 		if(bindingResult.hasErrors()) {
 			System.err.println("Error: ");
 			bindingResult.getAllErrors().forEach(System.err::println);
-			return "photos_form";
+			return "photos/photos_form";
 		}else {
 			try {
+				photo.setId(id);
 				photoService.save(photo);
 			}catch(Exception e) {
 				System.err.println(e.getMessage());
-				return "photos_form";
+				return "photos/photos_form";
 			}
 		}
-		return "not_found";
+		return "redirect:/photos";
 	}
 	
 	@PostMapping("/delete/{photo_id}")
