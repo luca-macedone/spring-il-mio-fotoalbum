@@ -1,34 +1,37 @@
 <template>
-    <header class="container-fluid shadow" :class="reactiveData.modalView ? '' : 'mb-5'">
-        <nav class="row justify-content-between align-items-center py-3 bg-dark">
-            <div class="col text-light">
-                <span class="text-decoration-none text-light fs-3 fw-bold text-uppercase">
-                    Java Photographer
-                    <span class="fw-light text-lowercase">| frontoffice</span>
-                </span>
-            </div>
-            <div class="col d-flex justify-content-end align-items-center gap-1 gap-md-2">
-                <RouterLink type="button" class="btn text-light p-1 p-md-2" to="/">Home</RouterLink>
-                <!-- <RouterLink class="text-light text-decoration-none" to="/about">About</RouterLink> -->
-                <a type="button" class="btn d-flex justify-content-center align-items-center gap-2 p-1 p-md-2"
-                    href="http://localhost:8080/">
-                    <box-icon name="user-circle" type="solid" class="fill_light"></box-icon>
-                    <span class="text-light d-none d-md-inline-flex">
-                        Dashboard
-                    </span>
-                </a>
-                <button class="btn d-flex align-items-center justify-content-center gap-2 p-1 p-md-2"
-                    @click="toggleModal()">
-                    <box-icon name="message-square-dots" type="solid" class="fill_light"></box-icon>
-                    <span class="text-light d-none d-md-inline-flex">
-                        Contact Us
-                    </span>
-                </button>
-            </div>
-        </nav>
+    <header class="container-fluid shadow bg-dark" :class="reactiveData.modalView ? '' : 'mb-5'">
+        <div class="container">
+            <nav class="row justify-content-between align-items-center py-3">
+                <div class="col text-light">
+                    <a href="http://localhost:5173" class="text-decoration-none text-light fs-3 fw-bold text-uppercase">
+                        Java Photographer
+                        <span class="fw-light text-lowercase text_italic">| frontoffice</span>
+                    </a>
+                </div>
+                <div class="col d-flex justify-content-end align-items-center gap-1 gap-md-2 py-3">
+                    <button
+                        class="btn btn-outline-light nav_button rounded-0 text-uppercase d-flex align-items-center justify-content-center gap-2"
+                        @click="toggleModal()">
+                        <box-icon name="message-square-dots" type="solid" class="fill_light"></box-icon>
+                        <span class="text-light d-none d-md-inline-flex">
+                            Contact Us
+                        </span>
+                    </button>
+                    <!-- <RouterLink class="text-light text-decoration-none" to="/about">About</RouterLink> -->
+                    <a type="button"
+                        class="btn btn-outline-light nav_button rounded-0 text-uppercase d-flex align-items-center justify-content-center gap-2"
+                        href="http://localhost:8080/">
+                        <box-icon name="user-circle" type="solid" class="fill_light"></box-icon>
+                        <span class="text-light d-none d-md-inline-flex">
+                            Dashboard
+                        </span>
+                    </a>
+                </div>
+            </nav>
+        </div>
     </header>
     <div v-if="reactiveData.modalView">
-        <form class="bg-secondary d-flex flex-column justify-content-between align-items-center p-5 mb-5">
+        <form class="bg-secondary d-flex flex-column justify-content-between align-items-center p-3 p-md-5 mb-5">
             <div class="mb-3 w-100">
                 <label for="email" class="form-label text-light fw-semibold fs-5 text-uppercase">Email</label>
                 <input type="text" class="form-control rounded-0" name="email" id="email" aria-describedby="emailHelpId"
@@ -104,7 +107,7 @@ function success() {
     setTimeout(() => {
         reactiveData.successMessageView = !reactiveData.successMessageView;
         reactiveData.successMessageText = ""
-    }, 3000);
+    }, 2000);
 
 }
 
@@ -114,10 +117,16 @@ function fail() {
     setTimeout(() => {
         reactiveData.successMessageView = !reactiveData.successMessageView;
         reactiveData.successMessageText = ""
-    }, 3000);
+    }, 2000);
 
 
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.nav_button:hover>* {
+
+    color: var(--bs-dark) !important;
+    fill: var(--bs-dark) !important;
+}
+</style>

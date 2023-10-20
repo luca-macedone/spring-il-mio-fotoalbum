@@ -7,17 +7,19 @@
     <div th:replace="~{frags :: navbar}"></div>
     <div class="container">
         <div class="row g-3 my-5">
-            <div class="col p-3 d-flex align-items-center justify-content-center">
+            <div class="col-12 col-md-6 col-lg-4 p-3 d-flex align-items-center justify-content-center">
                 <a href="/photos" type="button" class="btn btn-outline-dark py-5 w-100 h-100 rounded-0">
                     Photos
                 </a>
             </div>
-            <div class="col p-3 d-flex align-items-center justify-content-center">
+            <div class="col-12 col-md-6 col-lg-4 p-3 d-flex align-items-center justify-content-center"
+                sec:authorize="hasAuthority('ADMIN')">
                 <a href="/categories" type="button" class="btn btn-outline-dark py-5 w-100 h-100 rounded-0">
                     Categories
                 </a>
             </div>
-            <div class="col p-3 d-flex align-items-center justify-content-center">
+            <div class="col-12 col-md-6 col-lg-4 p-3 d-flex align-items-center justify-content-center"
+                sec:authorize="hasAuthority('ADMIN')">
                 <a href="/messages" type="button" class="btn btn-outline-dark py-5 w-100 h-100 rounded-0">
                     Messages
                 </a>

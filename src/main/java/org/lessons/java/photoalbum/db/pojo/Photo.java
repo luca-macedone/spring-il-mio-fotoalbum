@@ -13,7 +13,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.NotBlank;
 
 @Entity
@@ -40,13 +42,19 @@ public class Photo {
 	@JsonManagedReference
 	private List<Category> categories;
 	
+	@ManyToOne
+	@JoinColumn(name = "user_id", nullable = false)
+	@JsonManagedReference
+	private User user;
+	
 	public Photo() {}
-	public Photo(String title, String description, String url, boolean visible, Category... categories) {
+	public Photo(String title, String description, String url, boolean visible, User user, Category... categories) {
 		setTitle(title);
 		setDescription(description);
 		setUrl(url);
 		setVisible(visible);
 		setCategories(Arrays.asList(categories));
+		setUser(user);
 	}
 	public Photo(PhotoDto photo) {
 		setTitle(photo.getTitle());
@@ -90,6 +98,12 @@ public class Photo {
 	}
 	public void setCategories(List<Category> categories) {
 		this.categories = categories;
+	}
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
 	}
 	
 	@Override

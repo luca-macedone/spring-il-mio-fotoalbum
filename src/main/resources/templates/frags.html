@@ -16,6 +16,9 @@
     <span sec:authorize="!hasAnyAuthority('USER', 'ADMIN')">
         <a href="/login" type="button" class="btn btn-outline-light rounded-0 text-uppercase">LOGIN</a>
     </span>
+   	<span>
+		<a href="http://localhost:5173" type="button" class="btn btn-outline-light rounded-0 text-uppercase">Frontoffice</a>		   
+   	</span>
 </div>
 
 <div th:fragment="navbar" class="container-fluid bg-dark">
@@ -24,10 +27,11 @@
             <div class="col">
                 <a href="/" class="text-decoration-none text-light fs-3 fw-bold text-uppercase">
                     Java Photographer
-                    <span class="fw-light text-lowercase">| backoffice</span>
+                    <span class="fw-light text-lowercase" style="font-style: italic;">| backoffice</span>
                 </a>
             </div>
             <div th:replace="~{frags :: login}"></div>
+            
         </div>
     </div>
 </div>
