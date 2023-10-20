@@ -9,6 +9,7 @@ const data = ref({
     photos: [],
     message: "",
     email: "",
+    filter: "",
 })
 
 onMounted(() => {
@@ -23,10 +24,36 @@ onMounted(() => {
         })
 })
 
+function filterPhotos() {
+    console.log(data.value.filter)
+    axios.get(base_url + photos_endpoint + "/filter/" + data.value.filter.toString())
+        .then(response => {
+            data.value.photos.length = 0
+            data.value.photos = response.data
+            console.log(response.data)
+            console.log(data.value.photos)
+        })
+        .catch(err => {
+            console.error(err.message)
+        })
+}
+
 </script>
 
 <template>
     <div class="container mb-5">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-8 col-lg-6 mb-4">
+                <div class=" input-group ">
+                    <input class="form-control border-dark rounded-0" v-model="data.filter" type="search" name="filter"
+                        id="filter">
+                    <button class="btn btn-dark rounded-0 d-flex align-items-center gap-2" @click.prevent="filterPhotos()">
+                        <box-icon name="search" type="solid" class="fill_light"></box-icon>
+                        Search
+                    </button>
+                </div>
+            </div>
+        </div>
         <div class="row g-3" v-if="data.photos.length > 0">
             <div class="col-12 col-md-6 col-lg-4" v-for="photo in data.photos" v-show="photo.visible == true">
                 <div class="rounded-0 border-0 shadow h-100">
