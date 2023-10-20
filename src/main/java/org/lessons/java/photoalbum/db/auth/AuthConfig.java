@@ -15,6 +15,7 @@ public class AuthConfig {
 	@Bean
 	SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 		http.csrf().disable().authorizeHttpRequests()
+			.requestMatchers("/").hasAuthority("ADMIN")
 			.requestMatchers("/photos").hasAuthority("ADMIN")
 			.requestMatchers("/photos/create").hasAuthority("ADMIN")
 			.requestMatchers("/photos/edit/**").hasAuthority("ADMIN")
@@ -25,6 +26,7 @@ public class AuthConfig {
 			.requestMatchers("/categories/edit/**").hasAuthority("ADMIN")
 			.requestMatchers("/categories/update/**").hasAuthority("ADMIN")
 			.requestMatchers("/categories/delete/**").hasAuthority("ADMIN")
+			.requestMatchers("/messages").hasAuthority("ADMIN")
 			.requestMatchers("/**").permitAll()
 			.and().formLogin().defaultSuccessUrl("/")
 			.and().logout();

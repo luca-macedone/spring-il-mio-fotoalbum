@@ -1,4 +1,6 @@
-import './assets/main.css'
+import './assets/sass/general.scss'
+import "../node_modules/bootstrap/scss/bootstrap.scss";
+import 'boxicons';
 
 import { createApp } from 'vue'
 import App from './App.vue'
