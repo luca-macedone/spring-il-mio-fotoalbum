@@ -1,5 +1,8 @@
 package org.lessons.java.photoalbum;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.lessons.java.photoalbum.db.pojo.Category;
 import org.lessons.java.photoalbum.db.pojo.Message;
 import org.lessons.java.photoalbum.db.pojo.Photo;
@@ -49,9 +52,9 @@ public class SpringIlMioFotoalbumApplication implements CommandLineRunner {
 		final String testPws = new BCryptPasswordEncoder().encode("test");
 		
 		User testAdmin = new User("admin", testPws, admin);
-		User testUser = new User("user", testPws, user);
-		User testUser2 = new User("user2", testPws, user);
-		User testUser3 = new User("user3", testPws, user);
+		User testUser = new User("mario82", testPws, user);
+		User testUser2 = new User("luca", testPws, user);
+		User testUser3 = new User("irene", testPws, user);
 		
 		userService.save(testAdmin);
 		userService.save(testUser);
@@ -61,12 +64,17 @@ public class SpringIlMioFotoalbumApplication implements CommandLineRunner {
 		System.out.println("----------------------------");
 		System.out.println("Users seeded.");
 		
-		Category cat1 = new Category("Lanscapes");
-		Category cat2 = new Category("Macro");
-		Category cat3 = new Category("Black and White");
-		Category cat4 = new Category("Night");
-		Category cat5 = new Category("Food");
-		Category cat6 = new Category("Wedding");
+		Category cat1 = new Category("Forest");
+		Category cat2 = new Category("Outdoor");
+		Category cat3 = new Category("Costume");
+		Category cat4 = new Category("Person");
+		Category cat5 = new Category("Autumn colors");
+		Category cat6 = new Category("Vegetable");
+		Category cat7 = new Category("Autumn Leaves");
+		Category cat8 = new Category("Action");
+		Category cat9 = new Category("Adventure");
+		Category cat10 = new Category("Landscape");
+		
 		
 		categoryService.save(cat1);
 		categoryService.save(cat2);
@@ -74,39 +82,98 @@ public class SpringIlMioFotoalbumApplication implements CommandLineRunner {
 		categoryService.save(cat4);
 		categoryService.save(cat5);
 		categoryService.save(cat6);
+		categoryService.save(cat7);
+		categoryService.save(cat8);
+		categoryService.save(cat9);
+		categoryService.save(cat10);
 		
 		System.out.println("----------------------------");
 		System.out.println("Categories seeded.");
 		
-		Photo ph1 = new Photo("lorem picsum 1", "Lorem Ipsum è considerato il testo segnaposto standard sin dal sedicesimo secolo, quando un anonimo tipografo prese una cassetta di caratteri e li assemblò per preparare un testo campione.", "https://picsum.photos/1200/1000?random=1", true, testUser, cat1);
-		Photo ph2 = new Photo("lorem picsum 2", "lorem ipsum sidet omen", "https://picsum.photos/1200/1000?random=2", false, testUser, cat1, cat2);
-		Photo ph3 = new Photo("lorem picsum 3", "È universalmente riconosciuto che un lettore che osserva il layout di una pagina viene distratto dal contenuto testuale se questo è leggibile. ", "https://picsum.photos/1200/1000?random=3", true, testUser, cat4, cat2, cat3);
-		Photo ph4 = new Photo("lorem picsum 4", "lorem ipsum sidet omen", "https://picsum.photos/1200/1000?random=4", true, testUser, cat5, cat6);
-		Photo ph5 = new Photo("lorem picsum 5", "lorem ipsum sidet omen", "https://picsum.photos/1200/1000?random=5", false, testUser2, cat3, cat1);
-		Photo ph6 = new Photo("lorem picsum 6", "Lorem Ipsum è considerato il testo segnaposto standard sin dal sedicesimo secolo, quando un anonimo tipografo prese una cassetta di caratteri e li assemblò per preparare un testo campione.", "https://picsum.photos/1200/1000?random=6", true, testUser2, cat1, cat6, cat5);
-		Photo ph7 = new Photo("lorem picsum 7", "Lorem Ipsum è considerato il testo segnaposto standard sin dal sedicesimo secolo, quando un anonimo tipografo prese una cassetta di caratteri e li assemblò per preparare un testo campione.", "https://picsum.photos/1200/1000?random=7", true, testUser2, cat1);
-		Photo ph8 = new Photo("lorem picsum 8", "lorem ipsum sidet omen", "https://picsum.photos/1200/1000?random=8", true, testUser2, cat4, cat2);
-		Photo ph9 = new Photo("lorem picsum 9", "lorem ipsum sidet omen", "https://picsum.photos/1200/1000?random=9", true, testUser3, cat1, cat6, cat5);
-		Photo ph10 = new Photo("lorem picsum 10", "lorem ipsum sidet omen", "https://picsum.photos/1200/1000?random=10", true, testUser3, cat1, cat3);
-		Photo ph11 = new Photo("lorem picsum 11", "lorem ipsum sidet omen", "https://picsum.photos/1200/1000?random1=11", true, testUser3, cat3, cat2);
-		Photo ph12 = new Photo("lorem picsum 12", "È universalmente riconosciuto che un lettore che osserva il layout di una pagina viene distratto dal contenuto testuale se questo è leggibile. ", "https://picsum.photos/1200/1000?random=12", true, testUser3, cat2);
-		Photo ph13 = new Photo("lorem picsum 13", "È universalmente riconosciuto che un lettore che osserva il layout di una pagina viene distratto dal contenuto testuale se questo è leggibile. ", "https://picsum.photos/1200/1000?random=13", true, testUser2, cat3, cat2);
-		Photo ph14 = new Photo("lorem picsum 14", "lorem ipsum sidet omen", "https://picsum.photos/1200/1000?random=14", true, testUser, cat4);
+		List<Photo> photos = new ArrayList<Photo>();
 		
-		photoService.save(ph1);
-		photoService.save(ph2);
-		photoService.save(ph3);
-		photoService.save(ph4);
-		photoService.save(ph5);
-		photoService.save(ph6);
-		photoService.save(ph7);
-		photoService.save(ph8);
-		photoService.save(ph9);
-		photoService.save(ph10);
-		photoService.save(ph11);
-		photoService.save(ph12);
-		photoService.save(ph13);
-		photoService.save(ph14);
+		photos.add(
+				new Photo(
+						"Leaves road",
+						"Concrete road between trees",
+						"https://images.pexels.com/photos/1563356/pexels-photo-1563356.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2", 
+						true, 
+						testUser3, 
+						cat1
+						)
+				);
+		photos.add(
+				new Photo(
+						"Yellow Leaves",
+						"Bunch of yellow leaves",
+						"https://images.pexels.com/photos/3082731/pexels-photo-3082731.jpeg", 
+						true, 
+						testUser2, 
+						cat7
+						)
+				);
+		photos.add(
+				new Photo(
+						"Spookie forest",
+						"Person wearing mask holding a bag surrounded with tall trees",
+						"https://images.pexels.com/photos/3179835/pexels-photo-3179835.jpeg", 
+						true, 
+						testUser, 
+						cat1,
+						cat2,
+						cat3,
+						cat4
+						)
+				);
+		photos.add(
+				new Photo(
+						"Underwater snorkling",
+						"Split-level photography of man underwater",
+						"https://images.pexels.com/photos/2765871/pexels-photo-2765871.jpeg", 
+						true, 
+						testUser3, 
+						cat4,
+						cat8
+						)
+				);
+		photos.add(
+				new Photo(
+						"Mad Mud",
+						"Person riding bike making trek on thin air",
+						"https://images.pexels.com/photos/71104/utah-mountain-biking-bike-biking-71104.jpeg", 
+						true, 
+						testUser2, 
+						cat4,
+						cat8,
+						cat9
+						)
+				);
+		photos.add(
+				new Photo(
+						"Wow!",
+						"A picturesque shot of haukland beach, Norway",
+						"https://images.pexels.com/photos/12312751/pexels-photo-12312751.jpeg", 
+						true, 
+						testUser, 
+						cat9,
+						cat10
+						)
+				);
+		photos.add(
+				new Photo(
+						"Snow Cap",
+						"Landscape photography of snow capped mountain",
+						"https://images.pexels.com/photos/2613946/pexels-photo-2613946.jpeg", 
+						true, 
+						testUser2, 
+						cat10
+						)
+				);
+		
+		
+		for(Photo p : photos){
+			photoService.save(p);
+		}
 		
 		System.out.println("----------------------------");
 		System.out.println("Photos seeded.");

@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.lessons.java.photoalbum.api.dto.UserDto;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -48,6 +49,10 @@ public class User implements UserDetails {
 		setUsername(username);
 		setPassword(password);
 		setRoles(new HashSet<Role>(Arrays.asList(roles)));
+	}
+	public User(UserDto user) {
+		setUsername(user.getUsername());
+		setPassword(user.getPassword());
 	}
 	
 	public Integer getId() {

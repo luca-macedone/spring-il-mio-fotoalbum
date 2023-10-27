@@ -165,7 +165,8 @@ public class PhotoController {
 					photo.setUser(authUser);
 				}
 				
-				photo.setId(id);				photoService.save(photo);
+				photo.setId(id);				
+				photoService.save(photo);
 			}catch(Exception e) {
 				System.err.println(e.getMessage());
 				return "photos/photos_form";

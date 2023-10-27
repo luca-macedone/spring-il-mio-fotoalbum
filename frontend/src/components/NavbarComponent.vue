@@ -1,16 +1,17 @@
 <template>
-    <header class="container-fluid shadow bg-dark" :class="reactiveData.modalView ? '' : 'mb-5'">
+    <header class="container-fluid shadow bg_light" :class="reactiveData.modalView ? '' : 'mb-5'">
         <div class="container">
             <nav class="row justify-content-between align-items-center py-3">
                 <div class="col text-light">
                     <a href="http://localhost:5173" class="text-decoration-none text-light fs-3 fw-bold text-uppercase">
-                        Java Photographer
-                        <span class="fw-light text-lowercase text_italic">| frontoffice</span>
+                        <!-- Java Photographer
+                        <span class="fw-light text-lowercase text_italic">| frontoffice</span> -->
+                        <img src="/logo.svg" height="64" alt="Instant logo">
                     </a>
                 </div>
                 <div class="col d-flex justify-content-end align-items-center gap-1 gap-md-2 py-3">
                     <button
-                        class="btn btn-outline-light nav_button rounded-0 text-uppercase d-flex align-items-center justify-content-center gap-2"
+                        class="btn btn_primary nav_button rounded-0 text-uppercase d-flex align-items-center justify-content-center gap-2"
                         @click="toggleModal()">
                         <box-icon name="message-square-dots" type="solid" class="fill_light"></box-icon>
                         <span class="text-light d-none d-md-inline-flex">
@@ -19,7 +20,7 @@
                     </button>
                     <!-- <RouterLink class="text-light text-decoration-none" to="/about">About</RouterLink> -->
                     <a type="button"
-                        class="btn btn-outline-light nav_button rounded-0 text-uppercase d-flex align-items-center justify-content-center gap-2"
+                        class="btn btn_primary nav_button rounded-0 text-uppercase d-flex align-items-center justify-content-center gap-2"
                         href="http://localhost:8080/">
                         <box-icon name="user-circle" type="solid" class="fill_light"></box-icon>
                         <span class="text-light d-none d-md-inline-flex">
@@ -124,9 +125,10 @@ function fail() {
 </script>
 
 <style lang="scss" scoped>
-.nav_button:hover>* {
+@use "../assets/sass/variables.scss" as *;
 
-    color: var(--bs-dark) !important;
-    fill: var(--bs-dark) !important;
+.nav_button:hover>* {
+    color: $ms-dark !important;
+    fill: $ms-dark !important;
 }
 </style>

@@ -28,7 +28,7 @@ public class AuthConfig {
 			.requestMatchers("/categories/delete/**").hasAuthority("ADMIN")
 			.requestMatchers("/messages").hasAuthority("ADMIN")
 			.requestMatchers("/**").permitAll()
-			.and().formLogin().defaultSuccessUrl("/")
+			.and().formLogin().loginPage("/login").defaultSuccessUrl("/")
 			.and().logout();
 		
 		return http.build();

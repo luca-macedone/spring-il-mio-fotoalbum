@@ -1,0 +1,106 @@
+:root {
+    --ms-dark: #171717;
+    --ms-light: #FFF6F6;
+    --ms-primary: #89CFF3;
+    --ms-accent: #A0E9FF;
+    --ms-danger: #CE5A67;
+    --ms-warning: #F9B572;
+    --ms-success: #A7D397;
+    --ms-gray: #9BA4B5;
+}
+
+.text_dark {
+    color: var(--ms-dark);
+}
+
+.text_light {
+    color: var(--ms-light);
+}
+
+.text_primary {
+    color: var(--ms-primary);
+}
+
+.text_accent {
+    color: var(--ms-accent);
+}
+
+.text_danger {
+    color: var(--ms-danger);
+}
+
+.text_warning {
+    color: var(--ms-warning);
+}
+
+.text_success {
+    color: var(--ms-success);
+}
+
+.text_muted {
+    color: var(--ms-gray);
+}
+
+.bg_dark {
+    background-color: var(--ms-dark);
+}
+
+.bg_light {
+    background-color: var(--ms-light);
+}
+
+.bg_primary {
+    background-color: var(--ms-primary);
+}
+
+.bg_accent {
+    background-color: var(--ms-accent);
+}
+
+.bg_danger {
+    background-color: var(--ms-danger);
+}
+
+.bg_warning {
+    background-color: var(--ms-warning);
+}
+
+.bg_success {
+    background-color: var(--ms-success);
+}
+
+.bg_muted {
+    background-color: var(--ms-gray);
+}
+
+.fill_dark {
+    fill: var(--ms-dark);
+}
+
+.fill_light {
+    fill: var(--ms-light);
+}
+
+.fill_primary {
+    fill: var(--ms-primary);
+}
+
+.fill_accent {
+    fill: var(--ms-accent);
+}
+
+.fill_danger {
+    fill: var(--ms-danger);
+}
+
+.fill_warning {
+    fill: var(--ms-warning);
+}
+
+.fill_success {
+    fill: var(--ms-success);
+}
+
+.fill_muted {
+    fill: var(--ms-gray);
+}

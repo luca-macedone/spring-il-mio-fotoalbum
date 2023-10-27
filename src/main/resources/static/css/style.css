@@ -1,0 +1,96 @@
+@import url("./variables.css");
+
+.btn_primary {
+    background-color: var(--ms-primary) !important;
+    color: var(--ms-light) !important;
+}
+
+.btn_primary:hover {
+    background-color: var(--ms-accent) !important;
+    color: var(--ms-dark) !important;
+}
+
+.btn_dark {
+    background-color: var(--ms-dark) !important;
+    color: var(--ms-light) !important;
+}
+
+.btn_light {
+    background-color: var(--ms-light) !important;
+    color: var(--ms-dark) !important;
+}
+
+.btn_danger {
+    background-color: var(--ms-danger) !important;
+    color: var(--ms-light) !important;
+}
+
+.text_italic {
+    font-style: italic;
+}
+
+.user {
+    padding: .44rem;
+}
+
+.user_input {
+    background-color: var(--ms-light);
+    border: 2px solid var(--ms-light);
+}
+
+.user_input:focus {
+    box-shadow: none !important;
+    border: 2px solid var(--ms-accent);
+}
+
+input[type="checkbox"].user_input_checkbox {
+    appearance: none;
+    background: var(--ms-light) !important;
+    border: 1px solid var(--ms-primary) !important;
+    padding: .5rem;
+}
+
+input[type="checkbox"]:checked.user_input_checkbox {
+    background: var(--ms-accent) !important;
+    border: 1px solid var(--ms-accent) !important;
+    padding: .5rem;
+    position: relative;
+}
+
+input[type="checkbox"]:checked.user_input_checkbox::before {
+    content: "\2713";
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 100;
+    transform: translate(-50%, -50%);
+    font-size: 1.2rem;
+    color: var(--ms-light);
+}
+
+input[type="radio"].user_input_radio {
+    appearance: none;
+    background-color: var(--ms-light);
+    border: 1px solid var(--ms-primary) !important;
+    padding: .3rem;
+}
+
+input[type="radio"].user_input_radio::before {
+    content: "";
+    display: block;
+    width: .5rem;
+    height: .5rem;
+    /* border-radius: 50%; */
+    background-color: var(--ms-light);
+}
+
+input[type="radio"]:checked.user_input_radio::before {
+    content: "";
+    display: block;
+    width: .5rem;
+    height: .5rem;
+    /* border-radius: 50%; */
+    background-color: var(--ms-accent);
+
+}
