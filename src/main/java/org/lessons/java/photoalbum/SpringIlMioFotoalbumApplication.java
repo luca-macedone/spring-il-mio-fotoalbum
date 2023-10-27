@@ -74,6 +74,8 @@ public class SpringIlMioFotoalbumApplication implements CommandLineRunner {
 		Category cat8 = new Category("Action");
 		Category cat9 = new Category("Adventure");
 		Category cat10 = new Category("Landscape");
+		Category cat11 = new Category("Aerial Photography");
+		Category cat12 = new Category("Beach");
 		
 		
 		categoryService.save(cat1);
@@ -86,6 +88,8 @@ public class SpringIlMioFotoalbumApplication implements CommandLineRunner {
 		categoryService.save(cat8);
 		categoryService.save(cat9);
 		categoryService.save(cat10);
+		categoryService.save(cat11);
+		categoryService.save(cat12);
 		
 		System.out.println("----------------------------");
 		System.out.println("Categories seeded.");
@@ -167,6 +171,30 @@ public class SpringIlMioFotoalbumApplication implements CommandLineRunner {
 						true, 
 						testUser2, 
 						cat10
+						)
+				);
+		photos.add(
+				new Photo(
+						"Mad Mud",
+						"Person riding bike making trek on thin air",
+						"https://images.pexels.com/photos/2880718/pexels-photo-2880718.jpeg", 
+						true, 
+						testUser, 
+						cat4,
+						cat8,
+						cat9
+						)
+				);
+		photos.add(
+				new Photo(
+						"Sri Lanka's Wave",
+						"Aerial photography of person standing on seashore",
+						"https://images.pexels.com/photos/1007676/pexels-photo-1007676.jpeg", 
+						true, 
+						testUser2, 
+						cat11,
+						cat12,
+						cat4
 						)
 				);
 		
